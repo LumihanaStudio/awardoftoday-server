@@ -42,7 +42,7 @@ router.get('/info/:name', function (req, res) {
 });
 
 var j = 0;
-var search = 'null';
+var search = null;
 var json1 = null;
 var result = [];
 
@@ -75,9 +75,9 @@ router.get('/search/:search', function (req, res) {
                     }
                 }
             }
-            res.json({
+            res.json(
                 result
-            });
+            );
         }
         console.log(result);
         result = [];
@@ -114,9 +114,9 @@ router.post('/search', function (req, res) {
                     }
                 }
             }
-            res.json({
+            res.json(
                 result
-            });
+            );
         }
         console.log(result);
         result = [];
@@ -150,9 +150,9 @@ router.post('/location', function (req, res) {
                     }
                 }
             }
-            res.json({
+            res.json(
                 result
-            });
+            );
         console.log(result);
         result = [];
 	j = 0;
@@ -164,7 +164,7 @@ router.post('/info', function (req, res) {
         if (docs.length == 0) {
             res.send(403);
         } else {
-            res.json = ({
+            res.json({
 		_id: docs[0]._id.toString(),
                 name: docs[0].name,
                 lat: docs[0].lat,
@@ -207,10 +207,10 @@ router.get('/all', function (req, res) {
                     }
                 }
             }
-            res.json({ 
+            res.json( 
                 result
-            });
-        console.log(result);
+            );
+        console.log('success');
         result = [];
         j = 0;
     });
@@ -242,10 +242,10 @@ router.post('/all', function (req, res) {
                     }
                 }
             }
-            res.json({ 
+            res.json( 
                 result
-            });
-        console.log(result);
+            );
+        console.log('success');
         result = [];
         j = 0;
     });

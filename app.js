@@ -8,16 +8,14 @@ var session = require('express-session');
 
 var routes = require('./routes');
 var index = require('./routes/index');
-var user = require('./routes/user');
-var test = require('./routes/test');
-var hospital = require('./routes/hospital');
-var service = require('./routes/service');
-//var chat = require('./routes/chat');
-var tweeter = require('./routes/tweeter');
-var blog = require('./routes/blog');
+var auth = require('./routes/auth');
+var child = require('./routes/child');
+var parent = require('./routes/parent');
+var article = require('./routes/article');
 
 var app = express();
 var http = require('http').Server(app);
+
 var io = require('socket.io')(http);
 
 // view engine setup
@@ -39,14 +37,10 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.use('/user', user);
-app.use('/test', test);
-app.use('/hospital', hospital);
-app.use('/service', service);
-//app.use('/chat', chat);
-app.use('/tweeter', tweeter);
-app.use('/blog', blog);
-
+app.use('/auth', auth);
+app.use('/child', child);
+app.use('/parent', parent);
+app.use('/article', article);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('404 Not Found');
